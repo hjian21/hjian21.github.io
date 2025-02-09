@@ -60,7 +60,7 @@ plugins:
 author:
   name   : "Bin Fang"
   avatar : "/assets/images/BinFangLogo.jpeg"
-  bio    : "An Aweson Realtor Agent"
+  bio    : "An Awesome Realtor Agent"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
@@ -79,10 +79,10 @@ footer:
   links:
     - label: "Zillow"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://hjian21.github.io"
+      url: "https://www.zillow.com/profile/bfang"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
+      url: "https://hjian21.github.io"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       url: "https://instagram.com/"
