@@ -12,4 +12,4 @@ Are you looking to sell, buy, or rent a property? With my in-depth knowledge of 
 
 **Contact me today to get started!** email: bfang21@gmail.com
 
- avatar : "/assets/images/BayAreaListBuy.png"
+![Bay Area Real Estate](assets/images/BayAreaListBuy.png)
