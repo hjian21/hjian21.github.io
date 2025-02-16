@@ -8,4 +8,4 @@ main:
   - title: "Rent"
     url: /rent/
   - title: "About"
-    url: /_pages/about.md
+    url: /about
