@@ -110,9 +110,9 @@ defaults:
   # _about
   - scope:
       path: "_about"
-      type: about
+      type: posts
     values:
-      layout: posts
+      layout: single
       author_profile: true
       read_time: true
       comments: true
