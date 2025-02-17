@@ -124,7 +124,7 @@ defaults:
   # _about
    - scope:
       path: "_about"
-      type: about
+      type: posts
     values:
       layout: single
       author_profile: true
