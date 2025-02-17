@@ -106,6 +106,18 @@ defaults:
     values:
       layout: single
       author_profile: true
+  
+  # _about
+  - scope:
+      path: "_about"
+      type: about
+    values:
+      layout: posts
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
 
 category_archive:
   type: liquid
