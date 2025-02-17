@@ -1,10 +1,8 @@
+
 ---
-title: "Post: Chat"
-categories:
-  - Blog
-tags:
-  - chat
-  - Post Formats
+title: "About Me 2"
+layout: single
+permalink: /about/
 ---
 
 Hello: Strange as it may seem, they give ball players nowadays very peculiar names.
