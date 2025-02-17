@@ -1,3 +1,9 @@
+---
+title: "About Me"
+layout: single
+permalink: /about/
+---
+
 # Real Estate Purchase Review
 
 **Date:** 12/22/2024  
