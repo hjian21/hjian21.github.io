@@ -57,20 +57,6 @@ plugins:
   - jemoji
   - jekyll-include-cache
 
-# Collections
-collections:
-  about:
-    output: true
-    permalink: /about/:name/
-
-# Navigation
-nav:
-  - title: "Home"
-    url: "/"
-  - title: "About"
-    url: "/about/"
-
-# Author settings    
 author:
   name   : "Bin Fang"
   avatar : "/assets/images/BinFangLogo.jpeg"
@@ -121,19 +107,8 @@ defaults:
       layout: single
       author_profile: true
   
-  # _about
-   - scope:
-      path: "_about"
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
 
-#Archives
+
 category_archive:
   type: liquid
   path: /categories/
