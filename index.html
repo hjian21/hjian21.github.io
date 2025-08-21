@@ -1,0 +1,273 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jian (John) Hong - Battery Industry Specialist</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        header .profile-photo {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border: 3px solid #3498db;
+            margin-right: 2rem;
+        }
+        header .header-text {
+            flex-grow: 1;
+            text-align: center;
+
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .contact-info, .resume, .experience, .education, .skills, .certifications-publications, .patents {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        .contact-info h2, .resume h2, .experience h2, .education h2, .skills h2, .certifications-publications h2, .patents h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+        .contact-info p {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+        .resume p, .experience ul, .education ul, .skills ul, .certifications-publications ul, .patents ul {
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        .experience h3, .education h3, .skills h3 {
+            margin: 1rem 0 0.5rem;
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+        .experience h4, .education h4 {
+            margin: 0.5rem 0;
+            font-style: italic;
+            color: #555;
+        }
+        .experience ul, .education ul, .skills ul, .certifications-publications ul, .patents ul {
+            margin: 0.5rem 0 1.5rem 1.5rem;
+            padding-left: 0.5rem;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #2c3e50;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            header .profile-photo {
+                width: 150px;
+                height: 225px;
+                margin-bottom: 1rem;
+            }
+            header .header-text {
+                text-align: center;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .container {
+                margin: 1rem;
+                padding: 0 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Replace the src attribute with the actual URL of your personal photo -->
+        <img src="me.jpeg" alt="Jian (John) Hong Profile Photo" class="profile-photo">
+        <div class="header-text">
+            <h1>Jian (John) Hong</h1>
+            <p>Battery Specialist</p>
+        </div>
+    </header>
+    <div class="container">
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <p><strong>Email:</strong> <a href="mailto:jhong21@gmail.com">jhong21@gmail.com</a></p>
+            <p><strong>Phone:</strong> +1-408-5496422</p>
+        </div>
+        <div class="resume">
+            <h2>Professional Summary</h2>
+            <p>Innovative Senior Battery Engineer with 20+ years of experience in lithium-ion battery design, validation, and high-volume manufacturing for EV and energy storage applications. Proven ability to lead cell development from concept through mass production, driving success through cross-functional collaboration. Skilled in defining electrochemical, material screening, mechanical, and safety requirements; creating comprehensive test plans; and conducting root cause analysis (FMEA, RCA). Experienced in electrolyte qualification, electrode evaluation, laser welding, adhesive dispensing, and DFM. Strong technical proficiency in Python, MATLAB, and advanced electrochemical testing techniques (CV, EIS, GITT). Committed to advancing clean energy with reliable, scalable battery technologies.</p>
+        </div>
+        <div class="experience">
+            <h2>Professional Experience</h2>
+            <h3>Senior Cell Engineer, Apple, Inc.</h3>
+            <h4>Cupertino, CA | Feb 2016 – Present</h4>
+            <ul>
+                <li>Owned lithium-ion cell design from concept to mass production, leading cross-functional teams to define electrochemical, mechanical, and safety requirements, achieving 95% OEE in high-volume production.</li>
+                <li>Developed and executed automated test plans for electrical, thermal, and safety validation using Python and MATLAB, identifying and resolving failure modes to improve yield by 20%.</li>
+                <li>Developed strategic relationships with external cell manufacturers to qualify laser welding and adhesive dispensing, negotiating specifications to meet stringent design and safety standards.</li>
+                <li>Conducted DFMEA reviews and tolerance analysis, optimizing assembly processes to reduce production cycle time by 15%.</li>
+                <li>Synthesized test results into actionable insights, reporting to leadership to guide program-level decisions and corrective actions, including cell selection and design changes.</li>
+            </ul>
+            <h3>Battery Engineer, Maxwell Technologies, Inc.</h3>
+            <h4>San Diego, CA | Jun 2012 – Dec 2015</h4>
+            <ul>
+                <li>Spearheaded dry electrode and electrolyte optimization for LIB, LIC, and EDLC, scaling designs from lab to pilot production while collaborating with suppliers to meet performance and durability targets.</li>
+                <li>Defined and validated test plans for cell reliability, fast charge, and safety, using electrochemical testing (CV, EIS) to identify cell degradation mechanisms and enhance process reliability by 25%.</li>
+                <li>Negotiated material and process specifications with suppliers for laser/tab welding and adhesive dispensing, ensuring compliance with SPC and Cp/Cpk metrics.</li>
+                <li>Designed custom tooling with poke-yokes for high-precision cell assembly, driving 40% improvement in test throughput through automation.</li>
+                <li>Contributed to pilot line layout and equipment specifications, achieving cost reductions through optimized material and process workflows.</li>
+            </ul>
+            <h3>Research Scientist, Brookhaven National Laboratory (DOE)</h3>
+            <h4>Upton, NY | Dec 2009 – May 2012</h4>
+            <ul>
+                <li>Developed high-capacity cathode materials for next-generation LIBs, validating electrochemical performance using synchrotron XRD and XAFS under high-stress conditions.</li>
+                <li>Collaborated with national labs and suppliers to qualify scalable cell designs, defining performance and safety requirements for industrial applications.</li>
+                <li>Implemented SPC and FMEA to analyze material degradation, improving cell reliability by 18% and reporting findings to project stakeholders.</li>
+            </ul>
+        </div>
+        <div class="education">
+            <h2>Education</h2>
+            <h3>Ph.D., Materials Science</h3>
+            <h4>SUNY Binghamton | 2009</h4>
+            <ul>
+                <li>Ph.D. Supervisor: Prof. M. Stanley Whittingham, 2019 Nobel Prize in Chemistry winner for the development of lithium-ion batteries.</li>
+            </ul>
+            <h3>M.S., Materials Science</h3>
+            <h4>Zhejiang University | 2004</h4>
+            <ul>
+                <li>Specialized in advanced materials for energy applications.</li>
+            </ul>
+            <h3>B.S., Materials Science</h3>
+            <h4>Zhejiang University | 2001</h4>
+            <ul>
+                <li>Focused on foundational materials science and engineering principles.</li>
+            </ul>
+        </div>
+        <div class="skills">
+            <h2>Skills & Technical Proficiency</h2>
+            <h3>Battery Design & Manufacturing</h3>
+            <ul>
+                <li>Lithium-ion cell design, module assembly, laser/tab welding, adhesive dispensing, pilot-to-production scaling, DFM, PFMEA, and PPAP.</li>
+            </ul>
+            <h3>Testing & Validation</h3>
+            <ul>
+                <li>Electrochemical testing (CV, GITT, EIS, PITT), abuse/reliability testing, test plan development, failure mode analysis, cell degradation analysis.</li>
+            </ul>
+            <h3>Quality & Process</h3>
+            <ul>
+                <li>SPC (Cp/Cpk, FMEA), TQP, OEE optimization, root cause analysis (RCA), DFM/DFA.</li>
+            </ul>
+            <h3>Tools & Programming</h3>
+            <ul>
+                <li>Python, R, MATLAB, SQL, data analysis, visualization.</li>
+            </ul>
+            <h3>Collaboration</h3>
+            <ul>
+                <li>Cross-functional team leadership, supplier industrialization, technical writing, project management.</li>
+            </ul>
+        </div>
+        <div class="certifications-publications">
+            <h2>Certifications & Publications</h2>
+            <ul>
+                <li>BOOK: <a href="https://www.amazon.com/Engineer-Crash-Course-Hands-Project-based/dp/B0DC4PG4DJ" target="_blank">Engineer Crash Course: A Hands-on, Project-based Introduction to Data-driven Engineering</a> | 2024</li>
+                <li>Data Science Professional Certificate, Coursera | 2023</li>
+                <li>Six Sigma Green Belt | 2020</li>
+            </ul>
+        </div>
+        <div class="patents">
+            <h2>Patents</h2>
+            <ul>
+                <li>Methods and Apparatuses for Polymer Fibrillization Under Electric Field, Patent Number: 10547045</li>
+                <li>Electrolyte Formulations for Energy Storage Devices, Patent Number: 10249449</li>
+                <li>Dry Energy Storage Device Electrode and Methods of Making the Same, Patent Number: 10741843</li>
+                <li>Electrolyte Formulations for Energy Storage Devices, Patent Number: 11107640</li>
+                <li>Dry Energy Storage Device Electrode and Methods of Making the Same, Patent Number: 11876230</li>
+                <li>Electrolyte Formulations for Energy Storage Devices, Patent Number: 12362106</li>
+                <li>Process and Chemicals for In-Situ Pre-Lithiation of Lithium-Ion Battery Anodes, Publication Number: 20240106011</li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Jian (John) Hong. All rights reserved.</p>
+    </footer>
+    <script>
+        // Basic interactivity for email link
+        document.querySelector('a[href^="mailto"]').addEventListener('click', function() {
+            alert('Opening email client for jhong21@gmail.com');
+        });
+    </script>
+</body>
+</html>
