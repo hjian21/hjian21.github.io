@@ -56,27 +56,29 @@
             color: white;
             padding: 2rem;
             display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: flex-start;
+        }
+        header .header-content {
+            display: flex;
+            align-items: center;
         }
         header .profile-photo {
             width: 200px;
             height: 300px;
             object-fit: cover;
             border: 3px solid #3498db;
-            margin-right: 2rem;
+            margin-right: 1rem;
         }
         header .header-text {
-            flex-grow: 1;
             text-align: center;
-
         }
         header h1 {
             margin: 0;
             font-size: 2.5rem;
         }
         header p {
-            margin: 0.5rem 0;
+            margin: 0.5rem 0 0;
             font-size: 1.2rem;
         }
         .container {
@@ -130,12 +132,16 @@
         @media (max-width: 600px) {
             header {
                 flex-direction: column;
-                align-items: center;
                 text-align: center;
+            }
+            header .header-content {
+                flex-direction: column;
+                align-items: center;
             }
             header .profile-photo {
                 width: 150px;
                 height: 225px;
+                margin-right: 0;
                 margin-bottom: 1rem;
             }
             header .header-text {
@@ -153,11 +159,13 @@
 </head>
 <body>
     <header>
-        <!-- Replace the src attribute with the actual URL of your personal photo -->
-        <img src="me.jpeg" alt="Jian (John) Hong Profile Photo" class="profile-photo">
-        <div class="header-text">
-            <h1>Jian (John) Hong</h1>
-            <p>Battery Specialist</p>
+        <div class="header-content">
+            <!-- Replace the src attribute with the actual URL of your personal photo -->
+            <img src="me.jpeg" alt="Jian (John) Hong Profile Photo" class="profile-photo">
+            <div class="header-text">
+                <h1>Jian (John) Hong</h1>
+                <p>Battery Industry Specialist</p>
+            </div>
         </div>
     </header>
     <div class="container">
@@ -168,7 +176,7 @@
         </div>
         <div class="resume">
             <h2>Professional Summary</h2>
-            <p>Innovative Senior Battery Engineer with 20+ years of experience in lithium-ion battery design, validation, and high-volume manufacturing for EV and energy storage applications. Proven ability to lead cell development from concept through mass production, driving success through cross-functional collaboration. Skilled in defining electrochemical, material screening, mechanical, and safety requirements; creating comprehensive test plans; and conducting root cause analysis (FMEA, RCA). Experienced in electrolyte qualification, electrode evaluation, laser welding, adhesive dispensing, and DFM. Strong technical proficiency in Python, MATLAB, and advanced electrochemical testing techniques (CV, EIS, GITT). Committed to advancing clean energy with reliable, scalable battery technologies.</p>
+            <p>Innovative Senior Battery Engineer with 20+ years of experience in lithium-ion battery design, validation, and high-volume manufacturing for EV and energy storage applications. Proven ability to lead cell development from concept through mass production, driving success through cross-functional collaboration. Skilled in defining electrochemical, material screening, mechanical, and safety requirements; creating comprehensive test plans; and conducting root cause analysis (FMEA, SCAR). Experienced in electrolyte qualification, electrode evaluation, laser welding, adhesive dispensing, and DFM. Strong technical proficiency in Python, MATLAB, and advanced electrochemical testing techniques (CV, EIS, GITT). Committed to advancing clean energy with reliable, scalable battery technologies.</p>
         </div>
         <div class="experience">
             <h2>Professional Experience</h2>
@@ -228,11 +236,15 @@
             </ul>
             <h3>Quality & Process</h3>
             <ul>
-                <li>SPC (Cp/Cpk, FMEA), TQP, OEE optimization, root cause analysis (RCA), DFM/DFA.</li>
+                <li>SPC (Cp/Cpk, FMEA), TQP, OEE optimization, root cause analysis (SCAR), DFM/DFA.</li>
             </ul>
             <h3>Tools & Programming</h3>
             <ul>
-                <li>Python, R, MATLAB, SQL, data analysis, visualization.</li>
+                <li>Python, MATLAB, SQL, CATIA V6, Siemens NX (familiar), data analysis, visualization.</li>
+            </ul>
+            <h3>Instrumentation</h3>
+            <ul>
+                <li>CAN bus systems, thermocouples, strain/pressure sensors, vision-based inspections.</li>
             </ul>
             <h3>Collaboration</h3>
             <ul>
@@ -255,7 +267,6 @@
                 <li>Dry Energy Storage Device Electrode and Methods of Making the Same, Patent Number: 10741843</li>
                 <li>Electrolyte Formulations for Energy Storage Devices, Patent Number: 11107640</li>
                 <li>Dry Energy Storage Device Electrode and Methods of Making the Same, Patent Number: 11876230</li>
-                <li>Electrolyte Formulations for Energy Storage Devices, Patent Number: 12362106</li>
                 <li>Process and Chemicals for In-Situ Pre-Lithiation of Lithium-Ion Battery Anodes, Publication Number: 20240106011</li>
             </ul>
         </div>
